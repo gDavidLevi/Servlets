@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <!-- /index -->
+    <servlet>
+        <servlet-name>Index</servlet-name>
+        <servlet-class>servlets.Index</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Index</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+
+    <!-- /CalcServlet?one=1&two=2&operation=add -->
+    <servlet>
+        <servlet-name>CalcServlet</servlet-name>
+        <servlet-class>servlets.CalcServlet</servlet-class>
+        <init-param>
+            <param-name>Init_param1</param-name>
+            <param-value>Hello</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CalcServlet</servlet-name>
+        <url-pattern>/CalcServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- /CheckOperationsServlet -->
+    <servlet>
+        <servlet-name>CheckOperationsServlet</servlet-name>
+        <servlet-class>servlets.CheckOperationsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckOperationsServlet</servlet-name>
+        <url-pattern>/CheckOperationsServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- timeout -->
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+
+    <!-- error pages -->
+    <error-page>
+        <!-- Документ не существует (получен код 404 Not Found) -->
+        <error-code>404</error-code>
+        <location>/errors/404.html</location>
+    </error-page>
+    <error-page>
+        <!-- Запрос не может быть понят сервером из-за некорректного синтаксиса (получен код 400 Bad Request) -->
+        <error-code>400</error-code>
+        <location>/errors/400.html</location>
+    </error-page>
+</web-app>
